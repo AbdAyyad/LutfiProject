@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO.Compression;
-
+using System.IO;
 
 namespace GraduationProject
 {
@@ -9,12 +9,14 @@ namespace GraduationProject
         static void Main(string[] args)
         {
             Console.Write("enter docx file path: ");
-            string path = Console.ReadLine();
+            string docxPath = Console.ReadLine();
             string directory = RandomGenerator.GetRandomString();
-            Compressor.UnZip(path, directory);
-            //for (int i = 0; i < 5; ++i) {
-            //    Console.WriteLine(RandomGenerator.GetRandomString());
-            //}
+            Compressor.UnZip(docxPath, directory);
+            Console.Write("enter the path for the file we want hide: ");
+            string fileToHide = Console.ReadLine();
+            File.Copy(fileToHide, directory + "/" + fileToHide);
+            Compressor.Zip(directory, "new" + docxPath);
+            Directory.Delete(directory, true);
         }
     }
 }

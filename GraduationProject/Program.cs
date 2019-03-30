@@ -9,7 +9,8 @@ namespace GraduationProject
         static void Main(string[] args)
         {
             Console.Write("enter docx file path: ");
-            string docxPath = Console.ReadLine();
+            //string docxPath = Console.ReadLine();
+            string docxPath = @"C:\Users\abday\Desktop\New Microsoft Word Document.docx";
             string directory = RandomGenerator.GetRandomString();
             Compressor.UnZip(docxPath, directory);
             Console.Write("enter the path for the file we want hide: ");
